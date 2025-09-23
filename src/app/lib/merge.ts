@@ -13,11 +13,14 @@ export const interleave = <T>(a: T[], b: T[]): T[] => {
 };
 
 // convert items to BreedCard[]
-export const toCards = (items: any[]): BreedCardType[] => {
+export const toCards = (
+  items: any[],
+  species: "cat" | "dog"
+): BreedCardType[] => {
   return items.map((b) => ({
     id: String(b.id),
     name: b.name,
-    species: "cat",
+    species,
     origin: b.origin,
     temperament: b.temperament,
     imageUrl: b.image?.url ?? "",

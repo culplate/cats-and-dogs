@@ -16,8 +16,8 @@ export async function GET(req: Request) {
       getBreeds("dog", secondHalf, page),
     ]);
 
-    const cats = toCards(catsRaw);
-    const dogs = toCards(dogsRaw);
+    const cats = toCards(catsRaw, "cat");
+    const dogs = toCards(dogsRaw, "dog");
 
     const merged = mergeCards(cats, dogs);
 
