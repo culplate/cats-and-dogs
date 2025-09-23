@@ -1,6 +1,6 @@
 import { BreedCardType } from "../lib/types";
 import BreedCard from "./BreedCard";
-import SkeletonCard from "./SkeletonCard";
+import SkeletonCard from "./ui/SkeletonCard";
 
 interface GridProps {
   breeds: BreedCardType[];
