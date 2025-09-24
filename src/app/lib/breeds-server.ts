@@ -19,4 +19,3 @@ export async function getInitialBreeds(): Promise<BreedCardType[]> {
     throw new Error("Failed to load breeds");
   }
 }
-
