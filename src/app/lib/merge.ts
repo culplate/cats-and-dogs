@@ -1,5 +1,15 @@
 import { BreedCardType } from "./types";
 
+interface BreedData {
+  id: number;
+  name: string;
+  origin?: string;
+  temperament?: string;
+  image?: {
+    url: string;
+  };
+}
+
 // interleave two arrays
 export const interleave = <T>(a: T[], b: T[]): T[] => {
   const out: T[] = [];
@@ -14,7 +24,7 @@ export const interleave = <T>(a: T[], b: T[]): T[] => {
 
 // convert items to BreedCard[]
 export const toCards = (
-  items: any[],
+  items: BreedData[],
   species: "cat" | "dog"
 ): BreedCardType[] => {
   return items.map((b) => ({
