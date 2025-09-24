@@ -81,7 +81,7 @@ export default function ImageSlider({ images }: ImageSliderProps) {
           <>
             <button
               onClick={prevImage}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 rounded-full transition-all duration-200"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 rounded-full transition-all duration-200 cursor-pointer"
               aria-label="Previous image"
             >
               <svg
@@ -100,7 +100,7 @@ export default function ImageSlider({ images }: ImageSliderProps) {
             </button>
             <button
               onClick={nextImage}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 rounded-full transition-all duration-200"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 rounded-full transition-all duration-200 cursor-pointer"
               aria-label="Next image"
             >
               <svg
@@ -130,12 +130,12 @@ export default function ImageSlider({ images }: ImageSliderProps) {
 
       {/* Thumbnail Navigation */}
       {limitedImages.length > 1 && (
-        <div className="mt-4 flex space-x-2 overflow-x-auto pb-2">
+        <div className="mt-2 pt-2 flex space-x-2 overflow-x-auto pb-2">
           {limitedImages.map((image, index) => (
             <button
               key={image.id}
               onClick={() => setCurrentIndex(index)}
-              className={`relative h-16 w-16 rounded-lg overflow-hidden flex-shrink-0 transition-all duration-200 ${
+              className={`relative h-16 w-16 rounded-lg overflow-hidden flex-shrink-0 transition-all duration-200 cursor-pointer ${
                 index === currentIndex
                   ? "ring-2 ring-blue-500 ring-offset-2"
                   : "hover:opacity-75"
