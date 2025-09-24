@@ -28,6 +28,11 @@ export const metadata: Metadata = {
   authors: [{ name: "Cats & Dogs Breeds App" }],
   creator: "Cats & Dogs Breeds App",
   publisher: "Cats & Dogs Breeds App",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
   robots: {
     index: true,
     follow: true,
