@@ -1,21 +1,26 @@
 import { BreedCardType } from "./types";
+import { getBreeds } from "./api/breeds";
+import { mergeCards, toCards } from "./merge";
 
 export async function getInitialBreeds(): Promise<BreedCardType[]> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-
   try {
-    const response = await fetch(`${baseUrl}/api/breeds?limit=20&page=0`, {
-      cache: "force-cache",
-      next: { revalidate: 86400 }, // expire every 24 hours
-    });
+    // Call the API functions directly instead of making HTTP requests to prevent CORS and build issues
+    const limit = 20;
+    const page = 0;
+    const firstHalf = Math.ceil(limit / 2);
+    const secondHalf = limit - firstHalf;
 
-    if (!response.ok) {
-      throw new Error("Failed to fetch initial breeds");
-    }
+    const [catsRaw, dogsRaw] = await Promise.all([
+      getBreeds("cat", firstHalf, page),
+      getBreeds("dog", secondHalf, page),
+    ]);
 
-    return response.json();
+    const cats = toCards(catsRaw, "cat");
+    const dogs = toCards(dogsRaw, "dog");
+
+    return mergeCards(cats, dogs);
   } catch (error) {
     console.error("Error fetching initial breeds:", error);
-    throw new Error("Failed to load breeds");
+    return [];
   }
 }
